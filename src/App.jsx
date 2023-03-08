@@ -4,7 +4,7 @@
 import './App.css'
 import CalculHours from './assets/Components/CalculHours'
 import CaptureLines from './assets/Components/CaptureLines'
-import DbCard from './assets/Components/DbCard'
+import ALV from './assets/Components/DbCard'
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
 
      {/* <CalculHours />  */}
       {/* <CaptureLines/> */}
-      <DbCard/>
+      <ALV/>
 
     </div>
   )
