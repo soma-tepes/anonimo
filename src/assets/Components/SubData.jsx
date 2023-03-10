@@ -1,6 +1,9 @@
 import React from 'react'
 
 const SubData = ({data}) => {
+
+
+  
   return (
     <div>
 
@@ -9,7 +12,8 @@ const SubData = ({data}) => {
         <ul>{data.__EMPTY_3}</ul>
         <ul>{data.__EMPTY_7}</ul>
     </li>
-   
+      <button>Delete</button>
+      <button>Edit</button>
 
     </div>
   )
