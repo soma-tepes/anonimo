@@ -16,15 +16,16 @@ const DbCard = () => {
   e.preventDefault()
   setPage(0);
   const filter = BD.filter(data => {
-    const value = data.__EMPTY_4;
-    if (typeof value === 'string') {
-      return value.trim().toLowerCase() === initialInput.trim().toLowerCase();
-    } else if (typeof value === 'number') {
-      return value === parseInt(initialInput, 10);
-    } else {
-      return false; // O cualquier otro valor predeterminado que desee usar
-    }
-  });
+  const value = data.__EMPTY_4;
+  const value2 = data.__EMPTY_7;
+  const input = initialInput.trim().toLowerCase();
+  
+  return (typeof value === 'string' && value.trim().toLowerCase() === input) ||
+         (typeof value === 'number' && value === parseInt(input, 10)) ||
+         (typeof value2 === 'string' && value2.trim().toLowerCase() === input) ||
+         (typeof value2 === 'number' && value2 === parseInt(input, 10))
+})
+  
    if(initialInput){
     if(filter.length>0){
     setFilterDataBase(filter)
