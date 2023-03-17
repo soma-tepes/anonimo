@@ -5,6 +5,8 @@ import './App.css'
 import CalculHours from './assets/Components/CalculHours'
 import CaptureLines from './assets/Components/CaptureLines'
 import ALV from './assets/Components/DbCard'
+import Etiquetas from './assets/Components/Etiquetas'
+import Rastreabilidades from './assets/Components/Rastreabilidades'
 
 function App() {
 
@@ -16,9 +18,11 @@ function App() {
     <div className="App">
 
 
-     {/* <CalculHours />  */}
+      {/* <CalculHours />  */}
       {/* <CaptureLines/> */}
-      <ALV/>
+ {/*      <ALV /> */}
+      {/* <Etiquetas/> */}
+      <Rastreabilidades/>
 
     </div>
   )

@@ -15,6 +15,7 @@ const SubData = ({data}) => {
         <ul><span>QTY Per BOX: </span>{data.__EMPTY_7}</ul>
 
         <ul><span>QTY Per Bolsa: </span>{data.__EMPTY_8}</ul>
+        <ul><span>M. Mode: </span>{data.__EMPTY_11 == "Parts (Mass Prod.)" ? "Sub-Ensamble": "Producto Terminado"}</ul>
     </li>
     <div className='card_btns'>
     <button className='card_btn'>Delete</button>
