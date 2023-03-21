@@ -20,7 +20,7 @@ function App() {
 
       {/* <CalculHours />  */}
       {/* <CaptureLines/> */}
- {/*      <ALV /> */}
+      {/* <ALV /> */}
       {/* <Etiquetas/> */}
       <Rastreabilidades/>
 
