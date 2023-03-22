@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import db from '../db/excel.json'
+import './Styles/Rastreabilidad.css'
 
 const Rastreabilidades = () => {
 
 const [initialInput, setInitialInput] = useState("")
-const [datas, setDatas] = useState("")
 const [base, setBase] = useState("")
+const [escaneados, setEscaneados] = useState([]);
 
-
-
-const handleSubmit = (e)=>{
-  e.preventDefault("")
-  let b = initialInput.split(" ").filter(element => element!= "")
-  let c = {... b} 
-   setDatas(c)
-   setInitialInput("")
-}
+const handleSubmit = (e) => {
+  e.preventDefault();
+  let b = initialInput.split(' ').filter((element) => element !== '');
+  let c = { ...b };
+  setBase(funtion2(c));
+  setInitialInput('');
+ 
+};
 
 //
-
+useEffect(()=>{
+  setEscaneados([...escaneados, base]);
+  
+},[base])
 //
 
 //
@@ -26,10 +29,7 @@ let funtion2 = (value)=>{
   let regex = /(\d+)/g;
      
    let filtrado  = db.basedata.filter(data=>data.__EMPTY_3 == value[0].slice(12))
-    console.log(filtrado)
-
-
-     let [L_0 , L_1 ,L_2,L_3,L_4,L_5,L_6,L_7] = [
+       let [L_0 , L_1 ,L_2,L_3,L_4,L_5,L_6,L_7] = [
     
   
        
@@ -55,32 +55,48 @@ let funtion2 = (value)=>{
         }
       }
      
+
+  
   
       return vision.flat()
      
 }
 //
-const form = funtion2(datas)
-//
+
+
 
   return (
     <div>Rastreabilidades
-
-      
-
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="text"   value={initialInput} onChange={e=>setInitialInput(e.target.value)} />
         <button>PUSH</button>
     </form>
-
-
-      <h2>Te muestro los datos Escaneados </h2>
+     <h2>Te muestro los datos Escaneados </h2>
      {
-     
+     <article>
+      <ul>
+        <li>{base[0]}</li>
+        <li>{base[1]}</li>
+        <li>{base[2]}</li>
+        <li>{base[3]}</li>
+      </ul>
+     </article>
      }
    <p>
-    {
+    {  escaneados.length >0 && 
+
+    escaneados.map(data=> 
       
+         <article className='r_box'>
+          <ul>
+            <li><span>Model: </span>{data[0] ? data[0]: ""}</li>
+            <li><span>QTY:</span>{data[1]}</li>
+            <li><span>Order: </span>{data[2]}</li>
+            <li><span>Lote: </span>{data[3]}</li>
+          </ul>
+         
+         </article>
+      )
     }
    </p>
     </div>

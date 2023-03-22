@@ -1,0 +1,16 @@
+.r_box{
+    border: 1px solid white;
+    background-color: gray;
+    width: 50vw;
+}
+.r_box ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+ }
+
+ .r_box ul li span{
+    display: block;
+ }
+  
