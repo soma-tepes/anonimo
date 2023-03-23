@@ -1,27 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import db from '../db/excel.json'
+import DatosRastre from './DatosRastre'
 import './Styles/Rastreabilidad.css'
 
 const Rastreabilidades = () => {
 
 const [initialInput, setInitialInput] = useState("")
-const [base, setBase] = useState("")
+const [base, setBase] = useState([])
 const [escaneados, setEscaneados] = useState([]);
+const [search, setSearch] = useState("")
+const [copy, setCopy] = useState([])
+
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  let b = initialInput.split(' ').filter((element) => element !== '');
+  let b = initialInput.toLocaleUpperCase().split(' ').filter((element) => element !== '');
   let c = { ...b };
   setBase(funtion2(c));
   setInitialInput('');
- 
+  
+ };
+
+
+
+ const handleSearch = (e) => {
+  e.preventDefault();
+
+  if (search) {
+    let result = escaneados.filter(data => data[0] == search);
+    if (result.length > 0) {
+      setCopy(result);
+    } else {
+      setCopy([]);
+    }
+  } else {
+    let result = escaneados;
+    setCopy(result);
+  }
+
+  setSearch("");
 };
 
+
 //
-useEffect(()=>{
-  setEscaneados([...escaneados, base]);
-  
-},[base])
+
 //
 
 //
@@ -33,7 +55,7 @@ let funtion2 = (value)=>{
     
   
        
-      filtrado.length > 0 ?(filtrado.map(data=> data.__EMPTY_4) ) 
+      filtrado.length > 0 ? filtrado.map(data=> data.__EMPTY_4) 
       : value[0].slice(0,4) === 'O001'? value[0].slice(12): value[0].slice(4,22) 
       
       ,
@@ -42,6 +64,8 @@ let funtion2 = (value)=>{
       value[2].match(regex) != null ? value[2].match(regex) : " ",
       // [3][4] puede alojar la orden 
       value[3].match(regex) ? value[3].slice(0,10).match(regex) : " ",
+
+      value[0].slice(0,4) === 'O001' ? value[4].slice(0,10) :
       value[4].match(regex) ? value[4].slice(0,10).match(regex).slice(0,10) : " ",
 
       value[5],
@@ -54,49 +78,48 @@ let funtion2 = (value)=>{
         delete vision[i]
         }
       }
-     
-
-  
-  
-      return vision.flat()
-     
-}
+       return vision.flat()
+  }
 //
+useEffect(()=>{
+  setEscaneados([...escaneados, base]);
+  setCopy([...escaneados, base]);
 
+  },[base])
 
 
   return (
     <div>Rastreabilidades
       <form onSubmit={handleSubmit}>
-        <input type="text"   value={initialInput} onChange={e=>setInitialInput(e.target.value)} />
+        <input type="text" placeholder='!Scan!'  value={initialInput} onChange={e=>setInitialInput(e.target.value)} />
+        
+    
         <button>PUSH</button>
     </form>
-     <h2>Te muestro los datos Escaneados </h2>
+    <form onSubmit={handleSearch}>
+    <input type="text" placeholder='Search!' value= {search} onChange={e=>setSearch(e.target.value)} />
+    </form>
+
+     <h2>Datas Scan By N12</h2>
      {
-     <article>
+    /*  <article>
       <ul>
         <li>{base[0]}</li>
         <li>{base[1]}</li>
         <li>{base[2]}</li>
         <li>{base[3]}</li>
       </ul>
-     </article>
+     </article> */
      }
    <p>
-    {  escaneados.length >0 && 
 
-    escaneados.map(data=> 
-      
-         <article className='r_box'>
-          <ul>
-            <li><span>Model: </span>{data[0] ? data[0]: ""}</li>
-            <li><span>QTY:</span>{data[1]}</li>
-            <li><span>Order: </span>{data[2]}</li>
-            <li><span>Lote: </span>{data[3]}</li>
-          </ul>
-         
-         </article>
-      )
+    {  
+        copy.length > 0?   copy.map(data=> <DatosRastre  data={data}/>) :
+       "No data Exist"  }
+   </p>
+   <p>
+    {
+   
     }
    </p>
     </div>

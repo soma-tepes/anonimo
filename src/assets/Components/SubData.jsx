@@ -3,12 +3,14 @@ import './Styles/Card.css'
 
 const SubData = ({data}) => {
 
-
+  const handleClick=()=>{
+    alert("Hola")
+  }
   
   return (
     
-    <div className='card'>
-     <div class="card_container">
+    <div  className='card'>
+     <div className="card_container" onClick={handleClick}>
      <li>
         <ul><span>Model: </span>{data.__EMPTY_4}</ul>
         <ul><span className='card_block'>Description: </span>{data.__EMPTY_3}</ul>

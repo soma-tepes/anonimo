@@ -22,7 +22,7 @@ function App() {
       {/* <CaptureLines/> */}
       {/* <ALV /> */}
       {/* <Etiquetas/> */}
-      <Rastreabilidades/>
+      <Rastreabilidades />
 
     </div>
   )
