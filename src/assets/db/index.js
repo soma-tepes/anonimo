@@ -1,9 +1,8 @@
 'use strict'
 
 let etiqueta ="O013C030-59160        R-Pb        US180         EA 430017611400030          14 OF 21            310123300123"
-let input =  `O013C045-52480        R-Pb          10          EA 1020665962               090722-019`
-let terminado = `O001X0307107MX65B04C0023721               R-Pb        MX94       1021642934               200122-001
- `
+let input =  `O001X0221590MX65B04C0017988               R-Pb        MX120      102173452300010          230323-015`
+let terminado = `O001X0229126MX65B04C0018455               R-Pb        MX46       101990726800010          070322-014`
 
 
 let basedata = [
@@ -74,7 +73,7 @@ console.log(basedata[3].__EMPTY_3)
 let funtion2 = (value)=>{
     let regex = /(\d+)/g;
        
-     let filtrado  = basedata.filter(data=>data.__EMPTY_3 == value[0].slice(12))
+     let filtrado  = basedata.filter(data=>data.__EMPTY_3.toUpperCase() == value[0].toUpperCase().slice(12))
       console.log(filtrado)
 
 
