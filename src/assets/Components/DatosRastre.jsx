@@ -6,8 +6,13 @@ const handleClick =()=>{
 
 }
 
+console.log(data)
+
+
   return (
-    <article className= {` r_box ${data[0].charAt(0) ==='C' ? "r_yello": ""}`} onClick={handleClick}>
+    <article className= {` r_box ${data[0].toString().length == 8 ? "r_yello": 
+                                  data[0].toString().length == 10 ? "r_yello":                                                    
+                                                                                        ""} `} onClick={handleClick}>
 
     <ul>
       <li><span>Model:   </span>{data[0] }</li>

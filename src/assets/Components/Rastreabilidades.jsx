@@ -13,6 +13,10 @@ const Rastreabilidades = () => {
   const [copy, setCopy] = useState([])
   const [page, setPage] = useState(1)
 
+
+  const [numeroOfPage, setNumberPage] = useState(10)
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,10 +47,25 @@ const Rastreabilidades = () => {
     setSearch("");
   };
 
-
+  const handleChangePages = (e)=>{
+    const valor = setNumberPage(e.target.value)
+     
+setPage(1)
+    if(valor.length>0){
+      setPage(1)
+      setNumberPage(valor)
+    }
+    if(valor.length <=0){
+      setPage(1)
+      setNumberPage(1)
+    }
+  
+  }
+  
   //Pagination
 
-  const numberPerPage = 3;
+  const numberPerPage = numeroOfPage <= 0 ?  1  : numeroOfPage * 1
+  // numeroOfPage >= 0 ? "No data" : numeroOfPage
   const pagesVisited = numberPerPage * (page - 1);
   const totalPage = Math.ceil(copy.length / numberPerPage);
   const showPages = copy.slice(pagesVisited, pagesVisited + numberPerPage)
@@ -63,11 +82,11 @@ const Rastreabilidades = () => {
   let funtion2 = (value) => {
     let regex = /(\d+)/g;
 
-    let filtrado = db.basedata.filter(data => data.__EMPTY_3 == value[0].slice(12))
+    let filtrado = db.basedata.filter(data => data.__EMPTY_3 === value[0].slice(12))
     let [L_0, L_1, L_2, L_3, L_4, L_5, L_6, L_7] = [
 
 
-
+        value[0].slice(0,14)== 'O0520000000000' ? value[0].slice(14,22) :
       filtrado.length > 0 ? filtrado.map((data) => data.__EMPTY_4)
         : value[0].slice(0, 4) === 'O001' ? value[0].slice(12) : value[0].slice(4, 22)
 
@@ -96,7 +115,13 @@ const Rastreabilidades = () => {
   //
 
 
+const pagesButton =(e)=>{
 
+ e.preventDefault()
+
+ 
+
+}
 
 
 
@@ -104,7 +129,9 @@ const Rastreabilidades = () => {
     if (base.length > 0) {
       setEscaneados([...escaneados, base]);
       setCopy([...escaneados, base]);
+     
     }
+ 
   }, [base])
 
 
@@ -123,7 +150,12 @@ const Rastreabilidades = () => {
       </form>
 
       <h2>Datas Scan By N12</h2>
-     
+         Insert Number Pages
+        {
+    <input onSubmit={pagesButton} value={numeroOfPage} onChange={handleChangePages} type="number" min="1" max="100"
+             />
+        }
+       
       <p>
         {
                showPages.length >0 ? showPages : 
