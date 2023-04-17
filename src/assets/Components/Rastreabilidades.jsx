@@ -52,11 +52,11 @@ const Rastreabilidades = () => {
      
 setPage(1)
     if(valor.length>0){
-      setPage(1)
+    
       setNumberPage(valor)
     }
     if(valor.length <=0){
-      setPage(1)
+      
       setNumberPage(1)
     }
   

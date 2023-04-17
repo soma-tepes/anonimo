@@ -4,6 +4,7 @@
 import './App.css'
 import CalculHours from './assets/Components/CalculHours'
 import CaptureLines from './assets/Components/CaptureLines'
+import Converter from './assets/Components/Converter'
 import ALV from './assets/Components/DbCard'
 import Etiquetas from './assets/Components/Etiquetas'
 import Rastreabilidades from './assets/Components/Rastreabilidades'
@@ -19,10 +20,11 @@ function App() {
 
 
       {/* <CalculHours />  */}
-      {/* <CaptureLines/> */}
-      {/* <ALV /> */}
-      {/* <Etiquetas/> */}
-      <Rastreabilidades />
+     {/*  <CaptureLines/> */}
+     {/*  <ALV /> */}
+   {/*    <Etiquetas/> */}
+     {/*  <Rastreabilidades /> */}
+    <Converter/>
 
     </div>
   )
