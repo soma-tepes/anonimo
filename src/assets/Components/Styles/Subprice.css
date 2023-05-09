@@ -1,0 +1,18 @@
+
+.container_price{
+    border: 1px solid white;
+    height: 200px;
+    width: 200px;
+ 
+ 
+}
+.container_price div{
+    display: flex;
+    justify-content: center;
+  
+}
+
+.container_price div span{
+    border: 1px solid white;
+    display: block;
+}

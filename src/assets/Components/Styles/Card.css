@@ -63,10 +63,12 @@ ul{
     z-index: 2000;
     left: 0;
     top: 0;
+   
   }
   
   .modal_content {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+   
   }

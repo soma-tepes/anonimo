@@ -140,3 +140,15 @@ ul{
   color: grey;
   background-color: grey;
 }
+
+
+.container_price_principal{
+
+
+width: 80vw;
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+gap: 10px;
+}
