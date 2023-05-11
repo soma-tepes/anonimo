@@ -53,22 +53,3 @@ ul{
     gap: 50px;
 }
 
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-   
-  }
-  
-  .modal_content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-   
-  }

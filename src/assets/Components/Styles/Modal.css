@@ -1,0 +1,52 @@
+
+
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 2000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal_content {
+    background-color: #008ead;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+    animation: fadeIn 0.5s ease-in-out;
+    
+  }
+
+
+.modalContentTerminado{
+    background-color: #007897;
+}
+
+.modal_btn{
+    background-color: rgba(0, 0, 0, 0.8);;
+
+}
+.modal_btn:hover{
+    background-color: black;
+    transition: 300ms ease;
+   color: white;
+    border: 1px solid red;
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  

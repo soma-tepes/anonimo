@@ -1,8 +1,18 @@
 import React from 'react'
+import './Styles/Modal.css'
+import { useState } from 'react';
 
+const Modal = ({ datos , data , handleClose })=>{
 
-const Modal = ({ data , handleClose })=>{
-
+    const [buttonText, setButtonText] = useState("♾");
+    const handleMouseEnter = () => {
+        setButtonText("❌");
+      };
+      
+      const handleMouseLeave = () => {
+        setButtonText("♾");
+      };
+  
 
     return (<>
     
@@ -10,16 +20,18 @@ const Modal = ({ data , handleClose })=>{
       <div className="modal">
         <div className="modal_content">
           
-          <p>Description an Detail </p>
+        <h2> <p>Detail Model </p></h2> 
           <li>
-        <ul><span>Model: </span>{data.__EMPTY_3}</ul>
+        <ul><h3><span>Model: </span></h3><h3 className='modalContentTerminado'>{data.__EMPTY_3}</h3></ul>
         <ul><span className='card_block'>Description: </span>{data.__EMPTY_4}</ul>
-        <ul><span>Price x Piece: </span>{data.__EMPTY_10 == 0 ? "JEMT" : data.__EMPTY_10}</ul>
+        <ul><span>Price * Piece: </span><h3>{data.__EMPTY_10 == 0 ? "JEMT" : data.__EMPTY_10}</h3></ul>
 
         <ul><span>Moneda: </span>{data.__EMPTY_16 == 0 ? "JEMT" : data.__EMPTY_16}</ul>
-        <ul><span>M. Mode: </span>{data.__EMPTY_11 == "Parts (Mass Prod.)" ? "Sub-Ensamble": "Producto Terminado"}</ul>
+        <ul className='modalContentTerminado'><span>M. Mode: </span>{datos.__EMPTY_11 == "Parts (Mass Prod.)" ? "Sub-Ensamble": "Producto Terminado"}</ul>
     </li>
-          <button onClick={handleClose}>Cerrar</button>
+          <button className='modal_btn' onClick={handleClose}  
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>  {buttonText}</button>
         </div>
       </div>
     ) 

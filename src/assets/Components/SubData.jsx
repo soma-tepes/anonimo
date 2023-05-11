@@ -27,13 +27,14 @@ const [db, setDb] = useState(price)
 
   
   const elementoEncontrado = db.find(item => item.__EMPTY_3 === data.__EMPTY_4);
-  
+
   return (
     
     <div  className='card'>
      <div className="card_container" onClick={handleClick}>
      <li>
         <ul><span>Model: </span>{data.__EMPTY_4}</ul>
+        <ul><h4></h4><span>Drawing: </span>{data.__EMPTY_4}</ul>
         <ul><span className='card_block'>Description: </span>{data.__EMPTY_3}</ul>
         <ul><span>QTY Per BOX: </span>{data.__EMPTY_7}</ul>
 
@@ -48,7 +49,7 @@ const [db, setDb] = useState(price)
 
      </div>
     
-     {showModal ? <Modal  data ={ elementoEncontrado } handleClose={handleClose}/>:null}
+     {showModal ? <Modal datos = {data} data ={ elementoEncontrado } handleClose={handleClose}/>:null}
     
     </div>
   )

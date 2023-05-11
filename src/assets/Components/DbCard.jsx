@@ -67,7 +67,18 @@ const DbCard = () => {
 
 
       <h2>Show DataBase</h2>
-     
+      
+      <ReactPaginate
+  previousLabel={"Previous"}
+  nextLabel={"Next"}
+  pageCount={totalPages}
+  onPageChange={changepage}
+  containerClassName={"navigationButtons"}
+  previousLinkClassName={"previousButton"}
+  nextLinkClassName={"nextButton"}
+  disabledClassName={"navigationDisabled"}
+  activeClassName={"navigationActive"}
+/>
    
       <article className='container'>
        {mostrarpagina.length > 0 ? mostrarpagina : 
