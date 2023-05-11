@@ -12,7 +12,7 @@ const [contenedor, setContenedor] = useState()
     return (
         <div className='container_price_principal'>
           
-            {Price && Price.map((data,i)=><SubPrice key={i} data={data}/>)}
+            {Price && Price.slice(0,50).map((data,i)=><SubPrice key={i} data={data}/>)}
         </div>
     )
 }

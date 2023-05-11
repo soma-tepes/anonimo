@@ -20,13 +20,13 @@ function App() {
     <div className="App">
 
 
-     {/*  <CalculHours />  */}
-       {/* <CaptureLines/> */}
-     {/*  <ALV /> */}
+      {/*  <CalculHours />  */}
+      {/* <CaptureLines/> */}
+      <ALV />
       {/*    <Etiquetas/> */}
       {/*  <Rastreabilidades /> */}
-     {/*   <Converter/> */}
- <Prices/>
+      {/*   <Converter/> */}
+     {/*  <Prices /> */}
     </div>
   )
 }
