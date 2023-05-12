@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DATABASE from '../db/excel.json'
 import SubData from '../Components/SubData'
 import ReactPaginate from 'react-paginate'
+import './Styles/DbCard.css'
 
 
 const BD = DATABASE.basedata.slice(2)
@@ -11,6 +12,18 @@ const DbCard = () => {
   const [initialInput, setInitialInput] = useState("")
   const [filterDataBase, setFilterDataBase] = useState(BD)
   const [page, setPage] = useState(0);
+  const [modalForm, setModalForm] = useState(false)
+  const [addData, setAddData] = useState({
+    __EMPTY : "",
+    __EMPTY_2: "",
+    __EMPTY_3: "",
+    __EMPTY_4: "",
+    __EMPTY_6: "",
+    __EMPTY_7: "",
+    __EMPTY_1: "",
+    __EMPTY_11: "",
+
+  })
 
   const handleSubmit =(e)=>{
   e.preventDefault()
@@ -40,8 +53,34 @@ const DbCard = () => {
 
 }
 
-  //Pagination!
+const handleForm = ()=>{
+   
+  setModalForm(true)
+   
+}
 
+const handleSubmitForm =(e)=>{
+  e.preventDefault()
+
+  const data = {
+    __EMPTY : e.target.__EMPTY.value  ? e.target.__EMPTY.value : null,
+    __EMPTY_1 : e.target.__EMPTY_1.value ?e.target.__EMPTY_1.value : null,
+    __EMPTY_2 : e.target.__EMPTY_2.value ?e.target.__EMPTY_2.value : null,
+    __EMPTY_3 : e.target.__EMPTY_3.value ?e.target.__EMPTY_3.value : null,
+    __EMPTY_4 : e.target.__EMPTY_4.value ?e.target.__EMPTY_4.value : null,
+    __EMPTY_6 : e.target.__EMPTY_6.value ?e.target.__EMPTY_6.value : null,
+    __EMPTY_7 : e.target.__EMPTY_7.value ?e.target.__EMPTY_7.value : null,
+    __EMPTY_11 : e.target.__EMPTY_11.value ?e.target.__EMPTY_11.value : null,
+    
+  }
+  setAddData(data, ... data)
+
+
+}
+  //Pagination!
+  const handleClose=()=>{
+    setModalForm(false);
+  }
 
   const elementoxpagina = 20;
   const numerodepaginasvisitadas = page * elementoxpagina;
@@ -54,10 +93,14 @@ const DbCard = () => {
       setPage(selected);
     };
 
+
+
  //
 
   return (
     <div>
+      <div> <button onClick={handleForm} className='dbCard_btn'>ADD MODEL ✔</button></div>
+     
       <div>Search per Model Or QTY</div>
       <form onSubmit={handleSubmit}>
         <input type="text" value={initialInput} onChange={(e)=>setInitialInput(e.target.value)}></input>
@@ -102,6 +145,25 @@ const DbCard = () => {
   activeClassName={"navigationActive"}
 />
       
+{ modalForm && 
+
+<div className='modalForm'>
+
+<form className='modal_contentForm' onSubmit={handleSubmitForm}>
+
+ <input type="text" name="" id="__EMPTY_4"  placeholder='Modelo'   required/>
+ <input type="text" name="" id="__EMPTY_3"   placeholder='Description'  required/>
+ <input type="text" name="" id="__EMPTY_7"  placeholder='QTY'  required />
+  <input type="text" name="" id="__EMPTY_6" placeholder='Mts Or EA'  required/>
+  <input type="text" name="" id="__EMPTY_11" placeholder='Sub or Terminator'  required/>
+  <button>POST</button>
+ <button onClick={handleClose}>❌</button>
+</form>
+</div>
+ 
+
+}
+ 
     </div>
   )
 }
