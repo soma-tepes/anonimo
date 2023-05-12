@@ -13,17 +13,7 @@ const DbCard = () => {
   const [filterDataBase, setFilterDataBase] = useState(BD)
   const [page, setPage] = useState(0);
   const [modalForm, setModalForm] = useState(false)
-  const [addData, setAddData] = useState({
-    __EMPTY : "",
-    __EMPTY_2: "",
-    __EMPTY_3: "",
-    __EMPTY_4: "",
-    __EMPTY_6: "",
-    __EMPTY_7: "",
-    __EMPTY_1: "",
-    __EMPTY_11: "",
-
-  })
+  const [addData, setAddData] = useState()
 
   const handleSubmit =(e)=>{
   e.preventDefault()
@@ -61,25 +51,26 @@ const handleForm = ()=>{
 
 const handleSubmitForm =(e)=>{
   e.preventDefault()
-
+const {__EMPTY,__EMPTY_1,__EMPTY_2,__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
   const data = {
-    __EMPTY : e.target.__EMPTY.value  ? e.target.__EMPTY.value : null,
-    __EMPTY_1 : e.target.__EMPTY_1.value ?e.target.__EMPTY_1.value : null,
-    __EMPTY_2 : e.target.__EMPTY_2.value ?e.target.__EMPTY_2.value : null,
-    __EMPTY_3 : e.target.__EMPTY_3.value ?e.target.__EMPTY_3.value : null,
-    __EMPTY_4 : e.target.__EMPTY_4.value ?e.target.__EMPTY_4.value : null,
-    __EMPTY_6 : e.target.__EMPTY_6.value ?e.target.__EMPTY_6.value : null,
-    __EMPTY_7 : e.target.__EMPTY_7.value ?e.target.__EMPTY_7.value : null,
-    __EMPTY_11 : e.target.__EMPTY_11.value ?e.target.__EMPTY_11.value : null,
+    __EMPTY : __EMPTY.value ?  __EMPTY.value : "No data",
+    __EMPTY_1 :__EMPTY_1.value ?  __EMPTY_1.value : "No data",
+    __EMPTY_2 :__EMPTY_2.value ?  __EMPTY_2.value : "No data",
+    __EMPTY_3 :__EMPTY_3.value ?  __EMPTY_3.value : "No data",
+    __EMPTY_4 :__EMPTY_4.value ?  __EMPTY_4.value : "No data",
+    __EMPTY_6 :__EMPTY_6.value ?  __EMPTY_6.value : "No data",
+    __EMPTY_7 :__EMPTY_7.value ?  __EMPTY_7.value : "No data",
+    __EMPTY_11 :__EMPTY_11.value ?  __EMPTY_11.value : "No data"
     
   }
-  setAddData(data, ... data)
+console.log(data)
 
 
 }
   //Pagination!
   const handleClose=()=>{
     setModalForm(false);
+    e.stop.propagation()
   }
 
   const elementoxpagina = 20;
@@ -150,6 +141,10 @@ const handleSubmitForm =(e)=>{
 <div className='modalForm'>
 
 <form className='modal_contentForm' onSubmit={handleSubmitForm}>
+ 
+{/* <input type="text" id='__EMPTY'/>
+<input type="text" id='__EMPTY_2'/>
+<input type="text" id='__EMPTY_1'/> */}
 
  <input type="text" name="" id="__EMPTY_4"  placeholder='Modelo'   required/>
  <input type="text" name="" id="__EMPTY_3"   placeholder='Description'  required/>
