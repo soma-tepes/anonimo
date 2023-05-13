@@ -154,6 +154,7 @@ setAddData([...addData,data])
  <input type="text" name="" id="__EMPTY_7"  placeholder='QTY'  required />
   <input type="text" name="" id="__EMPTY_6" placeholder='Mts Or EA'  required/>
   <input type="text" name="" id="__EMPTY_11" placeholder='Sub or Terminator'  required/>
+  <input type="file"  />
   <button>POST</button>
  <button onClick={handleClose}>❌</button>
 </form>
