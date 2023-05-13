@@ -13,7 +13,8 @@ const DbCard = () => {
   const [filterDataBase, setFilterDataBase] = useState(BD)
   const [page, setPage] = useState(0);
   const [modalForm, setModalForm] = useState(false)
-  const [addData, setAddData] = useState()
+  const [addData, setAddData] = useState([])
+  
 
   const handleSubmit =(e)=>{
   e.preventDefault()
@@ -51,11 +52,12 @@ const handleForm = ()=>{
 
 const handleSubmitForm =(e)=>{
   e.preventDefault()
-const {__EMPTY,__EMPTY_1,__EMPTY_2,__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
+const {__EMPTY = "ORC1" ,__EMPTY_1 = "C200",__EMPTY_2 ="JA02",__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
   const data = {
-    __EMPTY : __EMPTY.value ?  __EMPTY.value : "No data",
-    __EMPTY_1 :__EMPTY_1.value ?  __EMPTY_1.value : "No data",
-    __EMPTY_2 :__EMPTY_2.value ?  __EMPTY_2.value : "No data",
+
+    __EMPTY : __EMPTY.value ?  __EMPTY.value : __EMPTY,
+    __EMPTY_1 :__EMPTY_1.value ?  __EMPTY_1.value : __EMPTY_1,
+    __EMPTY_2 :__EMPTY_2.value ?  __EMPTY_2.value : __EMPTY_2,
     __EMPTY_3 :__EMPTY_3.value ?  __EMPTY_3.value : "No data",
     __EMPTY_4 :__EMPTY_4.value ?  __EMPTY_4.value : "No data",
     __EMPTY_6 :__EMPTY_6.value ?  __EMPTY_6.value : "No data",
@@ -63,14 +65,15 @@ const {__EMPTY,__EMPTY_1,__EMPTY_2,__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMP
     __EMPTY_11 :__EMPTY_11.value ?  __EMPTY_11.value : "No data"
     
   }
-console.log(data)
+setAddData([...addData,data])
 
 
 }
   //Pagination!
-  const handleClose=()=>{
+  const handleClose=(e)=>{
+   
     setModalForm(false);
-    e.stop.propagation()
+  
   }
 
   const elementoxpagina = 20;
