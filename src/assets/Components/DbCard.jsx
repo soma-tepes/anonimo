@@ -14,7 +14,7 @@ const DbCard = () => {
   const [page, setPage] = useState(0);
   const [modalForm, setModalForm] = useState(false)
   const [addData, setAddData] = useState([])
-  
+    
 
   const handleSubmit =(e)=>{
   e.preventDefault()
@@ -47,12 +47,20 @@ const DbCard = () => {
 const handleForm = ()=>{
    
   setModalForm(true)
+
    
 }
-
+// form
 const handleSubmitForm =(e)=>{
   e.preventDefault()
-const {__EMPTY = "ORC1" ,__EMPTY_1 = "C200",__EMPTY_2 ="JA02",__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
+  const validate_input = e.target.__EMPTY_4.value
+  const validate = BD.some(data=>data.__EMPTY_4 == validate_input)
+
+if(validate){
+ alert ("dato Repetido")
+}
+  else{
+ const {__EMPTY = "ORC1" ,__EMPTY_1 = "C200",__EMPTY_2 ="JA02",__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
   const data = {
 
     __EMPTY : __EMPTY.value ?  __EMPTY.value : __EMPTY,
@@ -66,8 +74,8 @@ const {__EMPTY = "ORC1" ,__EMPTY_1 = "C200",__EMPTY_2 ="JA02",__EMPTY_3,__EMPTY_
     
   }
 setAddData([...addData,data])
-
-
+e.target.reset()
+}
 }
   //Pagination!
   const handleClose=(e)=>{
@@ -152,8 +160,19 @@ setAddData([...addData,data])
  <input type="text" name="" id="__EMPTY_4"  placeholder='Modelo'   required/>
  <input type="text" name="" id="__EMPTY_3"   placeholder='Description'  required/>
  <input type="text" name="" id="__EMPTY_7"  placeholder='QTY'  required />
-  <input type="text" name="" id="__EMPTY_6" placeholder='Mts Or EA'  required/>
-  <input type="text" name="" id="__EMPTY_11" placeholder='Sub or Terminator'  required/>
+   <select name="" id="__EMPTY_6">
+    <option value="no_data"></option>
+    <option value="mts">Mts</option>
+    <option value="ea">EA</option>
+   </select>
+
+ {/*  <input type="text" name="" id="__EMPTY_6" placeholder='Mts Or EA'  required/> */}
+ <select name="" id="__EMPTY_11">
+  <option value="no_data"></option>
+  <option value="sub">Sub Assy</option>
+  <option value="finish">Finish Good</option>
+ </select>
+ {/*  <input type="text" name="" id="__EMPTY_11" placeholder='Sub or Terminator'  required/> */}
   <input type="file"  />
   <button>POST</button>
  <button onClick={handleClose}>❌</button>
