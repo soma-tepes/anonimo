@@ -13,13 +13,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 
   }
   
   .modal_content {
     position: relative;
-    background-color: #008ead;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 25px;
     color: white;
@@ -29,7 +29,7 @@
 
 
 .modalContentTerminado{
-    background-color: #007897;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal_btn{
@@ -53,5 +53,14 @@
       opacity: 1;
     }
   }
-
   
+ .modal_select{
+  display: flex;
+  gap: 40px;
+ }
+
+  .modal_select select{
+   width: auto;
+   text-align: center;
+  }
+ 
