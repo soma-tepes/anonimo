@@ -3,6 +3,8 @@ import DATABASE from '../db/excel.json'
 import SubData from '../Components/SubData'
 import ReactPaginate from 'react-paginate'
 import './Styles/DbCard.css'
+import Pagination from './Pagination'
+import FormAddComponent from './FormAddComponent'
 
 
 const BD = DATABASE.basedata.slice(2)
@@ -53,24 +55,24 @@ const handleForm = ()=>{
 // form
 const handleSubmitForm =(e)=>{
   e.preventDefault()
-  const validate_input = e.target.__EMPTY_4.value
+  const validate_input = e.target.__EMPTY_4.value.toUpperCase()
   const validate = BD.some(data=>data.__EMPTY_4 == validate_input)
 
 if(validate){
- alert ("dato Repetido")
+alert("data repeat") 
 }
   else{
  const {__EMPTY = "ORC1" ,__EMPTY_1 = "C200",__EMPTY_2 ="JA02",__EMPTY_3,__EMPTY_4,__EMPTY_6,__EMPTY_7,__EMPTY_11} = e.target
   const data = {
 
     __EMPTY : __EMPTY.value ?  __EMPTY.value : __EMPTY,
-    __EMPTY_1 :__EMPTY_1.value ?  __EMPTY_1.value : __EMPTY_1,
-    __EMPTY_2 :__EMPTY_2.value ?  __EMPTY_2.value : __EMPTY_2,
-    __EMPTY_3 :__EMPTY_3.value ?  __EMPTY_3.value : "No data",
-    __EMPTY_4 :__EMPTY_4.value ?  __EMPTY_4.value : "No data",
-    __EMPTY_6 :__EMPTY_6.value ?  __EMPTY_6.value : "No data",
-    __EMPTY_7 :__EMPTY_7.value ?  __EMPTY_7.value : "No data",
-    __EMPTY_11 :__EMPTY_11.value ?  __EMPTY_11.value : "No data"
+    __EMPTY_1 :__EMPTY_1.value ?  __EMPTY_1.value.toUpperCase() : __EMPTY_1,
+    __EMPTY_2 :__EMPTY_2.value ?  __EMPTY_2.value.toUpperCase() : __EMPTY_2,
+    __EMPTY_3 :__EMPTY_3.value ?  __EMPTY_3.value.toUpperCase() : "No data",
+    __EMPTY_4 :__EMPTY_4 ?  __EMPTY_4.value.toUpperCase() : "No data",
+    __EMPTY_6 :__EMPTY_6.value ?  __EMPTY_6.value.toUpperCase() : "No data",
+    __EMPTY_7 :__EMPTY_7.value ?  __EMPTY_7.value.toUpperCase() : "No data",
+    __EMPTY_11 :__EMPTY_11.value ?  __EMPTY_11.value.toUpperCase() : "No data"
     
   }
 setAddData([...addData,data])
@@ -112,18 +114,8 @@ e.target.reset()
 
 
       <h2>Show DataBase</h2>
-      
-      <ReactPaginate
-  previousLabel={"Previous"}
-  nextLabel={"Next"}
-  pageCount={totalPages}
-  onPageChange={changepage}
-  containerClassName={"navigationButtons"}
-  previousLinkClassName={"previousButton"}
-  nextLinkClassName={"nextButton"}
-  disabledClassName={"navigationDisabled"}
-  activeClassName={"navigationActive"}
-/>
+      <Pagination totalPages={totalPages} changepage={changepage}/>
+     
    
       <article className='container'>
        {mostrarpagina.length > 0 ? mostrarpagina : 
@@ -133,56 +125,13 @@ e.target.reset()
        </article>
        }
       </article>
-      
+      <Pagination totalPages={totalPages} changepage={changepage}/>
   
-  <ReactPaginate
-  previousLabel={"Previous"}
-  nextLabel={"Next"}
-  pageCount={totalPages}
-  onPageChange={changepage}
-  containerClassName={"navigationButtons"}
-  previousLinkClassName={"previousButton"}
-  nextLinkClassName={"nextButton"}
-  disabledClassName={"navigationDisabled"}
-  activeClassName={"navigationActive"}
-/>
+ 
       
-{ modalForm && 
-
-<div className='modalForm'>
-
-<form className='modal_contentForm' onSubmit={handleSubmitForm}>
+  <FormAddComponent modalForm={modalForm}/>
  
-{/* <input type="text" id='__EMPTY'/>
-<input type="text" id='__EMPTY_2'/>
-<input type="text" id='__EMPTY_1'/> */}
-
- <input type="text" name="" id="__EMPTY_4"  placeholder='Modelo'   required/>
- <input type="text" name="" id="__EMPTY_3"   placeholder='Description'  required/>
- <input type="text" name="" id="__EMPTY_7"  placeholder='QTY'  required />
-   <select name="" id="__EMPTY_6">
-    <option value="no_data"></option>
-    <option value="mts">Mts</option>
-    <option value="ea">EA</option>
-   </select>
-
- {/*  <input type="text" name="" id="__EMPTY_6" placeholder='Mts Or EA'  required/> */}
- <select name="" id="__EMPTY_11">
-  <option value="no_data"></option>
-  <option value="sub">Sub Assy</option>
-  <option value="finish">Finish Good</option>
- </select>
- {/*  <input type="text" name="" id="__EMPTY_11" placeholder='Sub or Terminator'  required/> */}
-  <input type="file"  />
-  <button>POST</button>
- <button onClick={handleClose}>❌</button>
-</form>
-</div>
- 
-
-}
- 
-    </div>
+ </div>
   )
 }
 
