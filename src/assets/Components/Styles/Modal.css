@@ -15,6 +15,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
 
+
   }
   
   .modal_content {
@@ -24,12 +25,40 @@
     border-radius: 25px;
     color: white;
     animation: fadeIn 0.5s ease-in-out;
-    
+   width: 500px;
+   height: 380px;
+    font-size: 20px;
   }
 
+.modal_content ul{
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.modal_description{
+margin: 20px;
+ 
+}
+.modalContentValue{
+
+  display: flex;
+
+justify-content: space-around;
+margin: 25px;
+}
+.modalContentValue div:nth-child(1){
+
+font-size: 15px;
+}
+.modalContentValue div:nth-child(2){
+
+  font-size: 15px;
+  
+}
 
 .modalContentTerminado{
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(246, 10, 10, 0.2);
 }
 
 .modal_btn{
@@ -45,6 +74,11 @@
    color: white;
     border: 1px solid red;
 }
+
+.modalCardBlock{
+  display: block;
+}
+
 @keyframes fadeIn {
     from {
       opacity: 0;

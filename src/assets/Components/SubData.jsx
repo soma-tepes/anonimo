@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Styles/Card.css'
 import price from '../db/data.json'
 import Modal from './Modal';
+import './Styles/Subdata.css'
 const SubData = ({data}) => {
 
   const [showModal, setShowModal] = useState(false);
@@ -29,9 +30,10 @@ const [db, setDb] = useState(price)
   const elementoEncontrado = db.find(item => item.__EMPTY_3 === data.__EMPTY_4);
 
   return (
-    
+   
     <div  className='card'>
-     <div className="card_container" onClick={handleClick}>
+   
+     <div className= {`card_container ${data.__EMPTY_11 == "Parts (Mass Prod.)"  ? "subdataFinish":"subdadaAssy"}`} onClick={handleClick}>
      <li>
         <ul><span>Model: </span>{data.__EMPTY_4}</ul>
         <ul><h4></h4><span>Drawing: </span>{data.__EMPTY_4}</ul>

@@ -1,49 +1,46 @@
-.card div:nth-child(1){
-    
-    border: 1px dotted black;
-     border-radius: 20px;
-     width: 350px;
-  
-  }
-  .card div:nth-child(1):hover{
+
+.card_container{
+   border: 1px dotted black;
+   border-radius: 20px;
+   width: 350px;
  
-    
-    cursor: pointer;
-  }
-  
-  .card_container{
-     display: flex;
-  
-     flex-direction: column;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  }
-  ul{
-     padding: 0;
-  }
-  
-  .card_btns
-  {
-     display: flex;
-     justify-content: space-around;
-     padding: 10px;
-  }
-  .card_block{
-     display: block;
-  }
-  
-  .card_Not_Search{
-     height: 80vh;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     gap: 50px;
-  }
-  
+}
+.card div:nth-child(1):hover {
+
+
+   cursor: pointer;
+}
+
+.card_container {
+   display: flex;
+
+   flex-direction: column;
+   padding: 0;
+   margin: 0;
+}
+
+li {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+ul {
+   padding: 0;
+}
+
+.card_btns {
+   display: flex;
+   justify-content: space-around;
+   padding: 10px;
+}
+
+
+.card_Not_Search {
+   height: 80vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 50px;
+}

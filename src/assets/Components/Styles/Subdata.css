@@ -1,0 +1,18 @@
+.subdataFinish{
+    background-color: rgba(4, 3, 2, 0.524);
+    color: beige;
+}
+
+.subdataFinish:hover{
+    background-color: black;
+    color: white;
+}
+
+.subdadaAssy{
+    background-color: #f8fafbf0;
+    color:  black;
+}
+.subdadaAssy:hover{
+    background-color: black;
+    color: white;
+}
