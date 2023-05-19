@@ -1,12 +1,4 @@
-.container{
-  background-color: white;
-  color: black;
-  width: 90vw;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  border-radius: 18px;
-}
+
 
 .pretty-input {
   border: none;

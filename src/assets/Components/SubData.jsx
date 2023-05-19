@@ -32,21 +32,22 @@ const [db, setDb] = useState(price)
   return (
    
     <div  className='card'>
-   
-     <div className= {`card_container ${data.__EMPTY_11 == "Parts (Mass Prod.)"  ? "subdataFinish":"subdadaAssy"}`} onClick={handleClick}>
-     <li>
-        <ul><span>Model: </span>{data.__EMPTY_4}</ul>
-        <ul><h4></h4><span>Drawing: </span>{data.__EMPTY_4}</ul>
-        <ul><span className='card_block'>Description: </span>{data.__EMPTY_3}</ul>
-        <ul><span>QTY Per BOX: </span>{data.__EMPTY_7}</ul>
 
-        <ul><span>QTY Per Package: </span>{data.__EMPTY_8}</ul>
-        <ul><span>M. Mode: </span>{data.__EMPTY_11 == "Parts (Mass Prod.)" ? "Sub-Ensamble": "Producto Terminado"}</ul>
-    </li>
-    <div className='card_btns'>
+     <div className= {`card_container ${data.__EMPTY_11 == "Parts (Mass Prod.)"  ? "subdataFinish":"subdadaAssy"}`} onClick={handleClick}>
+     <ul>
+        <li>{data.__EMPTY_4}</li>
+       
+        <li>{data.__EMPTY_3?data.__EMPTY_3:"N/A"}</li>
+        <li>{data.__EMPTY_7?data.__EMPTY_7:"N/A"}</li>
+
+        <li>{data.__EMPTY_8?data.__EMPTY_8:"N/A"}</li>
+        <li>{data.__EMPTY_11 == "Parts (Mass Prod.)" ? "Assy": "Terminado"}</li>
+   <div className='card_btns'>
     <button className='card_btn' onClick={handleDelete}>Delete</button>
       <button className='card_btn' onClick={handleEdit}>Editar</button>
     </div>
+    </ul>
+   
     
 
      </div>

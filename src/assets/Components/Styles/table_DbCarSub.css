@@ -1,0 +1,18 @@
+.table_DbCarSub{
+   display: grid;
+   border: 1px solid white;
+   grid-template-columns: .6fr 1.2fr .3fr .3fr .5fr .5fr;
+   grid-template-areas:    "c  c1   c2   c3   c4   c5 ";
+margin-bottom: 0;
+ border: none;
+ position: sticky;
+ top: 0;
+ width:90%;
+}
+
+.table_DbCarSub li{
+   border: 1px solid white;
+}
+.table_DbCarSub{
+  
+}

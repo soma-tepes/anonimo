@@ -1,18 +1,98 @@
+.card {
+ padding: 1px;
+    
+  }
+
+ 
+.card_container{
+   
+    border-radius: 20px;
+   
+ width: 80npvw;
+    padding: 0;
+    margin: 0;
+ }
+ .card div:nth-child(1):hover {
+ 
+ 
+    cursor: pointer;
+ }
+ .card_container ul{
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: .9fr 1.7fr .5fr .5fr .5fr 1fr;
+    grid-template-areas: "c1 c2 c3 c4 c5 c6 ";
+    
+
+ }
+ .card_container ul li:nth-child(1) {
+  display: grid; place-content: center;
+ }
+ .card_container ul li:nth-child(2) {
+    display: grid; place-content: center;
+   }
+ 
+   .card_container ul li:nth-child(3) {
+    display: grid; place-content: center;
+   }
+ 
+   .card_container ul li:nth-child(4) {
+    display: grid; place-content: center;
+   }
+ 
+   .card_container ul li:nth-child(5) {
+    display: grid; place-content: center;
+   }
+ 
+   .card_container ul li:nth-child(6) {
+    display: grid; place-content: center;
+   }
+   
+ 
+ .card_container li {
+    padding: 0;
+   
+ }
+ 
+ .card_btns {
+    display: flex;
+    width: 4px;
+    gap: 3px;
+    padding: 10px;
+    font-size: 13px;
+    
+ }
+ 
+ 
+ .card_Not_Search {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+ }
+
 .subdataFinish{
-    background-color: rgba(4, 3, 2, 0.524);
+    background-color: rgba(10, 10, 10, 0.524);
     color: beige;
 }
 
 .subdataFinish:hover{
-    background-color: black;
-    color: white;
+    background-color: yellow;
+    color: black;
+    transition: 300ms ease;
 }
 
 .subdadaAssy{
-    background-color: #f8fafbf0;
-    color:  black;
+    background-color: #040404f0;
+    color:  white;
 }
 .subdadaAssy:hover{
-    background-color: black;
+    background-color: rgb(128, 60, 1);
     color: white;
+    transition: 300ms ease;
 }

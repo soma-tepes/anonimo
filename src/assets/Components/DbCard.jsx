@@ -5,6 +5,9 @@ import './Styles/DbCard.css'
 import Pagination from './Pagination'
 import FormAddComponent from './FormAddComponent'
 import ShowData from './DbCarSub/ShowData'
+import TableModel from './DbCarSub/TableModel'
+
+
 
 
 const BD = DATABASE.basedata.slice(2)
@@ -113,7 +116,14 @@ const handleSubmitForm = (e) => {
    
     
   <Pagination totalPages={totalPages} changepage={changepage}/>
+   
+ 
+ <TableModel/>
+
   <ShowData mostrarpagina={mostrarpagina} initialInput={initialInput}/>
+ 
+
+
   <Pagination totalPages={totalPages} changepage={changepage}/>
   <FormAddComponent modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
  
