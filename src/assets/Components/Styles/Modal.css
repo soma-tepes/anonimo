@@ -28,8 +28,14 @@
    width: 500px;
    height: 380px;
     font-size: 20px;
+  
   }
-
+.borderModalF{
+  box-shadow: inset 5px 5px 15px 5px red;
+}
+.borderModalA{
+  box-shadow: inset 5px 5px 15px 5px gray;
+}
 .modal_content ul{
   display: flex;
   flex-direction: column;

@@ -9,7 +9,7 @@ const FormAddComponent = ({modalForm,handleSubmitForm,handleClose}) => {
 
 <form className='modal_contentForm' onSubmit={handleSubmitForm}>
  
-<input type="text" className='repeat_data' name="" id="__EMPTY_4"  placeholder='Modelo'   required/>
+<input type="text" className='repeat_data' name="" id="__EMPTY_4"  placeholder='Modelo'   />
  <input type="text" name="" id="__EMPTY_3"   placeholder='Description'  required/>
  <input type="number"  min="0" name="" id="__EMPTY_7"  placeholder='QTY'  required />
   

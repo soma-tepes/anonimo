@@ -9,7 +9,7 @@ const TableModel =({})=>{
         <p>hola</p>
          {
       a && 
-    <  ul class="table_DbCarSub">
+    <  ul className="table_DbCarSub">
      
         <li>Model</li>
         <li>Description</li>

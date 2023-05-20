@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import FormAddComponent from './FormAddComponent'
 import ShowData from './DbCarSub/ShowData'
 import TableModel from './DbCarSub/TableModel'
-
+import Price from "../db/data.json"
 
 
 
@@ -19,7 +19,7 @@ const DbCard = () => {
   const [page, setPage] = useState(0);
   const [modalForm, setModalForm] = useState(false)
   const [addData, setAddData] = useState([])
-    
+  const [priceDB, setPriceDB] = useState(Price) 
 
   const handleSubmit =(e)=>{
   e.preventDefault()
@@ -62,21 +62,36 @@ const handleSubmitForm = (e) => {
   if (validate) {
     alert("data repeat");
   } else {
-    
     const properties = ["__EMPTY", "__EMPTY_1", "__EMPTY_2", "__EMPTY_3", "__EMPTY_4", "__EMPTY_6", "__EMPTY_7", "__EMPTY_11"];
     const defaultValues = {
       __EMPTY: "ORC1",
       __EMPTY_1: "C200",
-      __EMPTY_2: "JA02"
+      __EMPTY_2: "JA02",
+      __EMPTY_7: "",
+      __EMPTY_11 : ""
+      
     };
 
     const data = {}
     properties.forEach(property => {
       data[property] = e.target[property] && e.target[property].value ? e.target[property].value.toUpperCase() : defaultValues[property] || "No data";
     });
-
+     
     setAddData([...addData, data]);
+    setFilterDataBase([...filterDataBase,data])
+    const newData = {
+      __EMPTY_4: "", // Asegúrate de reemplazar "name" con el nombre de la propiedad que contiene el nombre en el objeto "data"
+      __EMPTY_3: e.target.__EMPTY_4.value.toUpperCase() ,// Reemplaza "newProperty" con el nombre de la nueva propiedad y "valor" con su valor
+      __EMPTY_7: 0,
+      __EMPTY_10: 0,
+      __EMPTY_11: "",
+      __EMPTY_16: "",
+
+    };
+    setPriceDB([...priceDB, newData]);
     e.target.reset();
+    setModalForm(false)
+    
   }
 }
   //Pagination!
@@ -89,7 +104,7 @@ const handleSubmitForm = (e) => {
   const totalPages = Math.ceil(filterDataBase.length / elementoxpagina);
   const mostrarpagina = filterDataBase
     .slice(numerodepaginasvisitadas,numerodepaginasvisitadas + elementoxpagina)
-    .map(data => <SubData  data={data}/>);
+    .map((data,i) => <SubData key={i} data={data}/>);
 
     const changepage = ({ selected }) => {
       setPage(selected);

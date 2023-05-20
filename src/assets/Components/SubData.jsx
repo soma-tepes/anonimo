@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Styles/Card.css'
 import price from '../db/data.json'
 import Modal from './Modal';
@@ -29,6 +29,9 @@ const [db, setDb] = useState(price)
   
   const elementoEncontrado = db.find(item => item.__EMPTY_3 === data.__EMPTY_4);
 
+
+
+
   return (
    
     <div  className='card'>
@@ -52,8 +55,8 @@ const [db, setDb] = useState(price)
 
      </div>
     
-     {showModal ? <Modal datos = {data} data ={ elementoEncontrado } handleClose={handleClose}/>:null}
-    
+     {showModal ? <Modal datos = {data} elementoEncontrado ={ elementoEncontrado } handleClose={handleClose}/>:null}
+  
     </div>
   )
 }
