@@ -23,8 +23,7 @@ const FormAddComponent = ({modalForm,handleSubmitForm,handleClose}) => {
 
  <select name="" id="__EMPTY_11">
   <option value="no_data"></option>
- 
-  <option value="sub">Sub Assy</option>
+  <option value="Parts (Mass Prod.)">Sub Assy</option>
   <option value="finish">Finish Good</option>
  </select>
   </div>

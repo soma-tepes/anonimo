@@ -10,6 +10,7 @@ import Price from "../db/data.json"
 
 
 
+
 const BD = DATABASE.basedata.slice(2)
 
 const DbCard = () => {
@@ -20,7 +21,7 @@ const DbCard = () => {
   const [modalForm, setModalForm] = useState(false)
   const [addData, setAddData] = useState([])
   const [priceDB, setPriceDB] = useState(Price) 
-
+  const [error, setError] = useState("")
   const handleSubmit =(e)=>{
   e.preventDefault()
   setPage(0);
@@ -58,17 +59,19 @@ const handleSubmitForm = (e) => {
   e.preventDefault();
   const validate_input = e.target.__EMPTY_4.value.toUpperCase();
   const validate = BD.some(data => data.__EMPTY_4 == validate_input);
-
-  if (validate) {
+  const validate2 = priceDB.some(data=> data.__EMPTY_3 == validate_input)
+  
+  if (validate || validate2) {
     alert("data repeat");
-  } else {
+  }
+ 
+  else {
     const properties = ["__EMPTY", "__EMPTY_1", "__EMPTY_2", "__EMPTY_3", "__EMPTY_4", "__EMPTY_6", "__EMPTY_7", "__EMPTY_11"];
     const defaultValues = {
       __EMPTY: "ORC1",
       __EMPTY_1: "C200",
       __EMPTY_2: "JA02",
-      __EMPTY_7: "",
-      __EMPTY_11 : ""
+     
       
     };
 
@@ -84,7 +87,7 @@ const handleSubmitForm = (e) => {
       __EMPTY_3: e.target.__EMPTY_4.value.toUpperCase() ,// Reemplaza "newProperty" con el nombre de la nueva propiedad y "valor" con su valor
       __EMPTY_7: 0,
       __EMPTY_10: 0,
-      __EMPTY_11: "",
+      __EMPTY_11: 0,
       __EMPTY_16: "",
 
     };
@@ -104,7 +107,7 @@ const handleSubmitForm = (e) => {
   const totalPages = Math.ceil(filterDataBase.length / elementoxpagina);
   const mostrarpagina = filterDataBase
     .slice(numerodepaginasvisitadas,numerodepaginasvisitadas + elementoxpagina)
-    .map((data,i) => <SubData key={i} data={data}/>);
+    .map((data,i) => <SubData key={i} data={data} priceDB={priceDB}/>);
 
     const changepage = ({ selected }) => {
       setPage(selected);

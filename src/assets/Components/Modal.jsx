@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Styles/Modal.css'
 import { useState } from 'react';
 
@@ -15,7 +15,8 @@ const Modal = ({ datos : bdinfo , elementoEncontrado , handleClose })=>{
       };
 
  const mult =  elementoEncontrado.__EMPTY_10 * bdinfo.__EMPTY_7 
-  
+  const tar = "Parts (Mass Prod.)"
+  const res = tar.toLowerCase()
 
   
   return (<>
@@ -24,13 +25,14 @@ const Modal = ({ datos : bdinfo , elementoEncontrado , handleClose })=>{
     
 
 <div className="modal">
-<div className={`modal_content ${bdinfo.__EMPTY_11 == "Parts (Mass Prod.)" ? "borderModalA":"borderModalF"}`}>
+<div className={`modal_content ${bdinfo.__EMPTY_11.toLowerCase()  == res ? "borderModalA":"borderModalF"}`}>
   
 <h2> Description Prices </h2> 
 
 <ul>
 <li className='modalContentTerminado'><span>Model: </span> {elementoEncontrado.__EMPTY_3}</li>
 <div className='modal_description'>
+  <div><img src="" alt="" /></div>
 <li><span className='modalCardBlock'>Description: </span>{elementoEncontrado.__EMPTY_4}</li>
 </div>
 <div className='modalContentValue'>
@@ -40,7 +42,7 @@ const Modal = ({ datos : bdinfo , elementoEncontrado , handleClose })=>{
 </div>
 
 
-<li className='modalContentTerminado'><span>Type: </span>{bdinfo.__EMPTY_11 == "Parts (Mass Prod.)" ?  "Sub-Ensamble" :"Producto Terminado"}</li>
+<li className='modalContentTerminado'><span>Type: </span>{bdinfo.__EMPTY_11.toLowerCase()  == res ?  "Sub-Ensamble" :"Producto Terminado"}</li>
 </ul>
   <button className='modal_btn ' onClick={handleClose}  
   onMouseEnter={handleMouseEnter}
