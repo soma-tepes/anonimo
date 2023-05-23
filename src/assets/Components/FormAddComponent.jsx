@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-const FormAddComponent = ({modalForm,handleSubmitForm,handleClose}) => {
+const FormAddComponent = ({modalForm,handleSubmitForm,handleClose,editForm}) => {
+
+ 
+
+
   return (
     <div>
         { modalForm && 
 
-<div className='modalForm'>
+<div ref={editForm} className='modalForm'>
 
 <form className='modal_contentForm' onSubmit={handleSubmitForm}>
  

@@ -7,6 +7,7 @@ import CaptureLines from './assets/Components/CaptureLines'
 import Converter from './assets/Components/Converter'
 import ALV from './assets/Components/DbCard'
 import Etiquetas from './assets/Components/Etiquetas'
+import Example1 from './assets/Components/Examples/Example1'
 import Prices from './assets/Components/Prices'
 import Rastreabilidades from './assets/Components/Rastreabilidades'
 
@@ -27,6 +28,7 @@ function App() {
       {/*  <Rastreabilidades /> */}
       {/*   <Converter/> */}
      {/*  <Prices /> */}
+    {/*  <Example1/> */}
     </div>
   )
 }

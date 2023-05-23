@@ -3,7 +3,7 @@ import './Styles/Card.css'
 
 import Modal from './Modal';
 import './Styles/Subdata.css'
-const SubData = ({data, priceDB ,}) => {
+const SubData = ({data, priceDB ,editValue}) => {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -19,6 +19,9 @@ const SubData = ({data, priceDB ,}) => {
   
   const handleEdit = (e)=>{
    e.stopPropagation()
+ 
+   editValue(data)
+   
   }
   
 

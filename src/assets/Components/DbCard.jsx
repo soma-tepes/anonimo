@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import DATABASE from '../db/excel.json'
 import SubData from '../Components/SubData'
 import './Styles/DbCard.css'
@@ -21,11 +21,14 @@ const DbCard = () => {
   const [modalForm, setModalForm] = useState(false)
   const [addData, setAddData] = useState([])
   const [priceDB, setPriceDB] = useState(Price) 
-  const [error, setError] = useState("")
-  const handleSubmit =(e)=>{
+  const FINALBD = [...BD,...addData]
+
+const handleSubmit =(e)=>{
+
   e.preventDefault()
   setPage(0);
-  const filter = BD.filter(data => {
+ 
+  const filter = FINALBD.filter(data => {
   const value = data.__EMPTY_4;
   const value2 = data.__EMPTY_7;
   const value3 = data.__EMPTY_3;
@@ -45,7 +48,7 @@ const DbCard = () => {
   }
   else{setFilterDataBase([])}
   }
-  else{setFilterDataBase(BD)}
+  else{setFilterDataBase(FINALBD)}
   
 
 }
@@ -79,10 +82,7 @@ const handleSubmitForm = (e) => {
     properties.forEach(property => {
       data[property] = e.target[property] && e.target[property].value ? e.target[property].value.toUpperCase() : defaultValues[property] || "No data";
     });
-     
-    setAddData([...addData, data]);
-    setFilterDataBase([...filterDataBase,data])
-    const newData = {
+     const newData = {
       __EMPTY_4: "", // Asegúrate de reemplazar "name" con el nombre de la propiedad que contiene el nombre en el objeto "data"
       __EMPTY_3: e.target.__EMPTY_4.value.toUpperCase() ,// Reemplaza "newProperty" con el nombre de la nueva propiedad y "valor" con su valor
       __EMPTY_7: 0,
@@ -91,6 +91,8 @@ const handleSubmitForm = (e) => {
       __EMPTY_16: "",
 
     };
+    setAddData([...addData, data]);
+    setFilterDataBase([...filterDataBase,data])
     setPriceDB([...priceDB, newData]);
     e.target.reset();
     setModalForm(false)
@@ -102,16 +104,33 @@ const handleSubmitForm = (e) => {
    setModalForm(false);
   }
 
+  const editForm = useRef()
+  const editValue =(data)=>{
+    if (editValue.current) {
+   editForm.current.__EMPTY_4.value = data.__EMPTY_4
+   editForm.current.__EMPTY_3.value = data.__EMPTY_3 
+   editForm.current.__EMPTY_7.value = data.__EMPTY_7
+   editForm.current.__EMPTY_6.value = data.__EMPTY_6
+   editForm.current.__EMPTY_11.value = data.__EMPTY_11
+    }
+
+  }
+//Pagination
+
   const elementoxpagina = 20;
   const numerodepaginasvisitadas = page * elementoxpagina;
   const totalPages = Math.ceil(filterDataBase.length / elementoxpagina);
   const mostrarpagina = filterDataBase
     .slice(numerodepaginasvisitadas,numerodepaginasvisitadas + elementoxpagina)
-    .map((data,i) => <SubData key={i} data={data} priceDB={priceDB}/>);
+    .map((data,i) => <SubData key={i} data={data} priceDB={priceDB} editValue={editValue} />);
 
     const changepage = ({ selected }) => {
       setPage(selected);
     };
+
+
+
+ // Ref
 
 
 
@@ -143,7 +162,7 @@ const handleSubmitForm = (e) => {
 
 
   <Pagination totalPages={totalPages} changepage={changepage}/>
-  <FormAddComponent modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
+  <FormAddComponent editForm={editForm} modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
  
  </div>
   )
