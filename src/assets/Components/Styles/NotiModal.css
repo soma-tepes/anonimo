@@ -1,0 +1,9 @@
+.notiModal{
+    background-color: rgb(255, 51, 0);
+    border-radius: 20px;
+    color: white;
+ z-index: 2001;
+    position: fixed;
+    display: flex;
+    right: 50px;
+}

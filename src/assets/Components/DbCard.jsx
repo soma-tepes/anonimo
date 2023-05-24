@@ -7,6 +7,7 @@ import FormAddComponent from './FormAddComponent'
 import ShowData from './DbCarSub/ShowData'
 import TableModel from './DbCarSub/TableModel'
 import Price from "../db/data.json"
+import NotiModal from './DbCarSub/NotiModal'
 
 
 
@@ -21,6 +22,7 @@ const DbCard = () => {
   const [modalForm, setModalForm] = useState(false)
   const [addData, setAddData] = useState([])
   const [priceDB, setPriceDB] = useState(Price) 
+  const [notiModal, setNotiModal] = useState(!true)
   const FINALBD = [...BD,...addData]
 
 const handleSubmit =(e)=>{
@@ -96,7 +98,10 @@ const handleSubmitForm = (e) => {
     setPriceDB([...priceDB, newData]);
     e.target.reset();
     setModalForm(false)
-    
+    setNotiModal(true)
+    setTimeout(() => {
+      setNotiModal(!true)
+    }, 3000);
   }
 }
   //Pagination!
@@ -138,6 +143,7 @@ const handleSubmitForm = (e) => {
 
   return (
     <div>
+      {notiModal&&  <NotiModal/>} 
       <div> <button onClick={handleForm} className='dbCard_btn'>ADD MODEL ✔</button></div>
       <h2>Show DataBase</h2>
       
@@ -150,7 +156,7 @@ const handleSubmitForm = (e) => {
 
 
 
-   
+        
     
   <Pagination totalPages={totalPages} changepage={changepage}/>
    
