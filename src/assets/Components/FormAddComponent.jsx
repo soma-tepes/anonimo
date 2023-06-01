@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
 
-const FormAddComponent = ({modalForm,handleSubmitForm,handleClose,editForm}) => {
+
+const FormAddComponent = ({modalForm,handleSubmitForm,handleClose}) => {
 
  
 
@@ -9,7 +9,7 @@ const FormAddComponent = ({modalForm,handleSubmitForm,handleClose,editForm}) => 
     <div>
         { modalForm && 
 
-<div ref={editForm} className='modalForm'>
+<div  className='modalForm'>
 
 <form className='modal_contentForm' onSubmit={handleSubmitForm}>
  

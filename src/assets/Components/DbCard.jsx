@@ -80,6 +80,8 @@ const handleSubmitForm = (e) => {
       
     };
 
+
+
     const data = {}
     properties.forEach(property => {
       data[property] = e.target[property] && e.target[property].value ? e.target[property].value.toUpperCase() : defaultValues[property] || "No data";
@@ -104,30 +106,33 @@ const handleSubmitForm = (e) => {
     }, 3000);
   }
 }
-  //Pagination!
+
   const handleClose=()=>{
    setModalForm(false);
   }
 
-  const editForm = useRef()
-  const editValue =(data)=>{
-    if (editValue.current) {
-   editForm.current.__EMPTY_4.value = data.__EMPTY_4
-   editForm.current.__EMPTY_3.value = data.__EMPTY_3 
-   editForm.current.__EMPTY_7.value = data.__EMPTY_7
-   editForm.current.__EMPTY_6.value = data.__EMPTY_6
-   editForm.current.__EMPTY_11.value = data.__EMPTY_11
-    }
+//funtion edit
+const handleEdit = (index) => {
+  const data = [...bdform];
+  data[index].isEditing = true;
+  setBdform(data);
+}
 
-  }
+//
+ 
 //Pagination
 
   const elementoxpagina = 20;
   const numerodepaginasvisitadas = page * elementoxpagina;
-  const totalPages = Math.ceil(filterDataBase.length / elementoxpagina);
-  const mostrarpagina = filterDataBase
+  const totalPages = Math.ceil(FINALBD.length / elementoxpagina);
+  const mostrarpagina = FINALBD
     .slice(numerodepaginasvisitadas,numerodepaginasvisitadas + elementoxpagina)
-    .map((data,i) => <SubData key={i} data={data} priceDB={priceDB} editValue={editValue} />);
+    .map((data,i) => 
+    
+
+    <SubData key={i} data={data} priceDB={priceDB} handleEdit={handleEdit} i={i}  />
+    
+    );
 
     const changepage = ({ selected }) => {
       setPage(selected);
@@ -143,7 +148,7 @@ const handleSubmitForm = (e) => {
 
   return (
     <div>
-      {notiModal&&  <NotiModal/>} 
+      {notiModal &&  <NotiModal/>} 
       <div> <button onClick={handleForm} className='dbCard_btn'>ADD MODEL ✔</button></div>
       <h2>Show DataBase</h2>
       
@@ -153,22 +158,17 @@ const handleSubmitForm = (e) => {
         <input className='pretty-input' placeholder=' Model Or QTY' type="text" value={initialInput} onChange={(e)=>setInitialInput(e.target.value)}></input>
         <button>Push</button>
         </form>
-
-
-
-        
-    
-  <Pagination totalPages={totalPages} changepage={changepage}/>
+<Pagination totalPages={totalPages} changepage={changepage}/>
    
+<TableModel/>
+
+
+<ShowData mostrarpagina={mostrarpagina} initialInput={initialInput} />
  
- <TableModel/>
-
-  <ShowData mostrarpagina={mostrarpagina} initialInput={initialInput}/>
+ <Pagination totalPages={totalPages} changepage={changepage}/>
  
-
-
-  <Pagination totalPages={totalPages} changepage={changepage}/>
-  <FormAddComponent editForm={editForm} modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
+ {/* Agregar Elemento Formulario Principal  */}
+  <FormAddComponent  modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
  
  </div>
   )

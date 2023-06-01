@@ -1,9 +1,25 @@
-.notiModal{
+.notiModalContainer{
     background-color: rgb(255, 51, 0);
-    border-radius: 20px;
+    border-radius: 10px;
     color: white;
- z-index: 2001;
+    z-index: 2001;
     position: fixed;
     display: flex;
-    right: 50px;
+   justify-content: flex-start;
+   border: 1px solid white;
+   width: 200px;
+   margin-top: -30px;
+   align-items: center;
+   justify-content: center;
+   right: 100px;
 }
+
+@keyframes example {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  .notiModalContainer {
+    animation-name: example;
+    animation-duration: 1s;
+  }

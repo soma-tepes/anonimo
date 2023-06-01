@@ -5,8 +5,11 @@ const NotiModal =()=>{
     return (
 
         <>
-     <div className='notiModal'>
-     Agregaste Elemento
+     <div className='notiModalContainer'>
+        <div className='notiModal'>
+          Succefull Element +ADD
+        </div>
+   
     </div>  
         </>
     )

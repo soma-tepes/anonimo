@@ -3,7 +3,7 @@ import './Styles/Card.css'
 
 import Modal from './Modal';
 import './Styles/Subdata.css'
-const SubData = ({data, priceDB ,editValue}) => {
+const SubData = ({data, priceDB, i }) => {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -18,10 +18,13 @@ const SubData = ({data, priceDB ,editValue}) => {
   }
   
   const handleEdit = (e)=>{
+    
    e.stopPropagation()
- 
-   editValue(data)
+   console.log(i)
+  
    
+
+
   }
   
 
@@ -41,7 +44,7 @@ const result = aprob.toLowerCase()
     <div  className='card'>
 
      <div className= {`card_container ${data.__EMPTY_11.toLowerCase() ==  result ? "subdataFinish":"subdadaAssy"}`} onClick={handleClick}>
-     <ul>
+     <ul >
         <li>{data.__EMPTY_4}</li>
        
         <li>{data.__EMPTY_3 ? data.__EMPTY_3:"N/A"}</li>

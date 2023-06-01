@@ -21,7 +21,7 @@ function App() {
     <div className="App">
 
 
-      {/*  <CalculHours />  */}
+{/*        <CalculHours />  */}
       {/* <CaptureLines/> */}
       <ALV />
       {/*    <Etiquetas/> */}
