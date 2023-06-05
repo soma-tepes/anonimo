@@ -1,65 +1,73 @@
 import React, { useState } from 'react'
 
 const Example1 = () => {
-    const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [people, setPeople] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-
+  const [bdform, setBdform] = useState([])
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (editIndex !== null) {
-      const newPeople = [...people];
-      newPeople[editIndex] = { name, age };
-      setPeople(newPeople);
-      setEditIndex(null);
-    } else {
-      setPeople([...people, { name, age }]);
-    }
-    setName('');
-    setAge('');
-  };
+    e.preventDefault()
+    const { name, user, location } = e.target
+    const data = {
+      Name: name.value,
+      Ape: user.value,
+      Fam: location.value
+    };
+
+    setBdform([...bdform, data])
+    e.target.reset()
+  }
 
   const handleEdit = (index) => {
-    setName(people[index].name);
-    setAge(people[index].age);
-    setEditIndex(index);
-  };
+   
+  const data = [...bdform];
+  data[index].isEditing = true;
+      setBdform(data)
+    
+    
+  }
+
+  const handleUpdate = (index, e) => {
+    e.preventDefault();
+    const { name, user, location } = e.target;
+    const data = [...bdform];
+    data[index].Name = name.value;
+    data[index].Ape = user.value;
+    data[index].Fam = location.value;
+    data[index].isEditing = false;
+    setBdform(data);
+  }
 
   return (
     <div>
-      <h1>Simple form</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          Age:
-          <input
-            type="number"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </label>
-        <button type="submit">{editIndex !== null ? 'Save' : 'Submit'}</button>
-      </form>
-      <div>
-        <h2>Values of the form</h2>
-        <ul>
-          {people.map((person, index) => (
-            <li key={index}>
-              {person.name}, {person.age}{' '}
-              <button onClick={() => handleEdit(index)}>Edit</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    Form CRUD
+
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="name" />
+      <input type="text" name="user" />
+      <input type="text" name="location" />
+      <button>POST</button>
+    </form>
+    <article>
+    {
+bdform && bdform.map((data, i ) =>
+data.isEditing ? (
+  <form onSubmit={(e) => handleUpdate(i, e)}>
+    <input type="text" name="name" defaultValue={data.Name} />
+    <input type="text" name="user" defaultValue={data.Ape} />
+    <input type="text" name="location" defaultValue={data.Fam} />
+    <button>Update</button>
+  </form>
+) : (
+  <ul key={i}>
+    <li>{data.Name}</li>
+    <li>{data.Ape}</li>
+    <li>{data.Fam}</li>
+    <button onClick={() => handleEdit(i)}>Edit</button>
+  </ul>
+)
+)
+}
+    </article>
+  </div>
   )
 }
 

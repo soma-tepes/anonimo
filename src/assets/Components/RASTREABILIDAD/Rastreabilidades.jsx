@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
-import db from '../db/excel.json'
-import DatosRastre from './DatosRastre'
-import './Styles/Rastreabilidad.css'
+import db from '../../db/excel.json'
+import DatosRastre from '../DatosRastre'
+import '../Styles/Rastreabilidad.css'
 
 const Rastreabilidades = () => {
 

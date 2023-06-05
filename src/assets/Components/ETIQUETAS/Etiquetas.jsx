@@ -1,6 +1,6 @@
 import React from 'react'
-import db from '../db/excel.json'
-import '../Components/Styles/Etiqueta.css'
+import db from '../../db/excel.json'
+import '../Styles/Etiqueta.css'
 
 const BASE = db.basedata
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, {  useState } from 'react'
 import DATABASE from '../db/excel.json'
 import SubData from '../Components/SubData'
 import './Styles/DbCard.css'
@@ -30,7 +30,7 @@ const handleSubmit =(e)=>{
   e.preventDefault()
   setPage(0);
  
-  const filter = FINALBD.filter(data => {
+  const x = FINALBD.filter(data => {
   const value = data.__EMPTY_4;
   const value2 = data.__EMPTY_7;
   const value3 = data.__EMPTY_3;
@@ -45,9 +45,10 @@ const handleSubmit =(e)=>{
 })
   
   if(initialInput){
-  if(filter.length>0){
-    setFilterDataBase(filter)
-  }
+  if(x.length>0){
+    setFilterDataBase(x)
+    
+}
   else{setFilterDataBase([])}
   }
   else{setFilterDataBase(FINALBD)}
@@ -63,10 +64,10 @@ const handleForm = ()=>{
 const handleSubmitForm = (e) => {
   e.preventDefault();
   const validate_input = e.target.__EMPTY_4.value.toUpperCase();
-  const validate = BD.some(data => data.__EMPTY_4 == validate_input);
-  const validate2 = priceDB.some(data=> data.__EMPTY_3 == validate_input)
+  const validate = FINALBD.some(data => data.__EMPTY_4 == validate_input);
+ /*  const validate2 = priceDB.some(data=> data.__EMPTY_3 == validate_input) */
   
-  if (validate || validate2) {
+  if (validate) {
     alert("data repeat");
   }
  
@@ -112,11 +113,8 @@ const handleSubmitForm = (e) => {
   }
 
 //funtion edit
-const handleEdit = (index) => {
-  const data = [...bdform];
-  data[index].isEditing = true;
-  setBdform(data);
-}
+
+
 
 //
  
@@ -124,13 +122,13 @@ const handleEdit = (index) => {
 
   const elementoxpagina = 20;
   const numerodepaginasvisitadas = page * elementoxpagina;
-  const totalPages = Math.ceil(FINALBD.length / elementoxpagina);
-  const mostrarpagina = FINALBD
+  const totalPages = Math.ceil(filterDataBase.length / elementoxpagina);
+  const mostrarpagina = filterDataBase
     .slice(numerodepaginasvisitadas,numerodepaginasvisitadas + elementoxpagina)
     .map((data,i) => 
     
-
-    <SubData key={i} data={data} priceDB={priceDB} handleEdit={handleEdit} i={i}  />
+    
+    <SubData key={i} data={data} priceDB={priceDB} i={i} FINALBD={FINALBD}/>
     
     );
 
@@ -168,7 +166,12 @@ const handleEdit = (index) => {
  <Pagination totalPages={totalPages} changepage={changepage}/>
  
  {/* Agregar Elemento Formulario Principal  */}
-  <FormAddComponent  modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
+ 
+ 
+
+ <FormAddComponent  modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
+ 
+ 
  
  </div>
   )
