@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import SubFormDont from './SubFormDont'
+import SubFormPass from './SubFormPass'
 
 const Example1 = () => {
   const [bdform, setBdform] = useState([])
@@ -50,19 +52,9 @@ const Example1 = () => {
     {
 bdform && bdform.map((data, i ) =>
 data.isEditing ? (
-  <form onSubmit={(e) => handleUpdate(i, e)}>
-    <input type="text" name="name" defaultValue={data.Name} />
-    <input type="text" name="user" defaultValue={data.Ape} />
-    <input type="text" name="location" defaultValue={data.Fam} />
-    <button>Update</button>
-  </form>
+  <SubFormDont handleUpdate={handleUpdate} data={data} i={i}/>
 ) : (
-  <ul key={i}>
-    <li>{data.Name}</li>
-    <li>{data.Ape}</li>
-    <li>{data.Fam}</li>
-    <button onClick={() => handleEdit(i)}>Edit</button>
-  </ul>
+  <SubFormPass data={data} i={i} handleEdit={handleEdit}/>
 )
 )
 }

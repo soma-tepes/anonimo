@@ -30,6 +30,7 @@ const Modal = ({ datos : bdinfo , elementoEncontrado , handleClose })=>{
 <h2> Description Prices </h2> 
 
 <ul>
+ 
 <li className='modalContentTerminado'><span>Model: </span> {elementoEncontrado.__EMPTY_3}</li>
 <div className='modal_description'>
   <div><img src="" alt="" /></div>

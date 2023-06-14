@@ -8,7 +8,9 @@ import ShowData from './DbCarSub/ShowData'
 import TableModel from './DbCarSub/TableModel'
 import Price from "../db/data.json"
 import NotiModal from './DbCarSub/NotiModal'
-
+import { v4 as uuidv4 } from 'uuid';
+import { useRef } from 'react'
+import ModalCon from './ModalCon'
 
 
 
@@ -20,11 +22,13 @@ const DbCard = () => {
   const [filterDataBase, setFilterDataBase] = useState(BD)
   const [page, setPage] = useState(0);
   const [modalForm, setModalForm] = useState(false)
+  const [modalConfirmation, setModalConfirmation] = useState(false)
   const [addData, setAddData] = useState([])
   const [priceDB, setPriceDB] = useState(Price) 
   const [notiModal, setNotiModal] = useState(!true)
   const FINALBD = [...BD,...addData]
-
+   FINALBD.forEach(data=>{data.id = uuidv4()})
+  
 const handleSubmit =(e)=>{
 
   e.preventDefault()
@@ -59,7 +63,18 @@ const handleSubmit =(e)=>{
 const handleForm = ()=>{
    setModalForm(true)
 }
+// converter a JSON//
+const downloadLink = useRef(null);
+const handleDownload = () => {
+  const jsonData = JSON.stringify(FINALBD);
+  const blob = new Blob([jsonData], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  downloadLink.current.href = url;
+  downloadLink.current.download = 'data.json';
+  downloadLink.current.click();
+};
 
+//end converter a JSON
 // form
 const handleSubmitForm = (e) => {
   e.preventDefault();
@@ -88,6 +103,7 @@ const handleSubmitForm = (e) => {
       data[property] = e.target[property] && e.target[property].value ? e.target[property].value.toUpperCase() : defaultValues[property] || "No data";
     });
      const newData = {
+      
       __EMPTY_4: "", // Asegúrate de reemplazar "name" con el nombre de la propiedad que contiene el nombre en el objeto "data"
       __EMPTY_3: e.target.__EMPTY_4.value.toUpperCase() ,// Reemplaza "newProperty" con el nombre de la nueva propiedad y "valor" con su valor
       __EMPTY_7: 0,
@@ -128,7 +144,7 @@ const handleSubmitForm = (e) => {
     .map((data,i) => 
     
     
-    <SubData key={i} data={data} priceDB={priceDB} i={i} FINALBD={FINALBD}/>
+    <SubData key={i} data={data} priceDB={priceDB} i={i} FINALBD={FINALBD} setFilterDataBase={setFilterDataBase} />
     
     );
 
@@ -170,6 +186,13 @@ const handleSubmitForm = (e) => {
  
 
  <FormAddComponent  modalForm={modalForm} handleSubmitForm={handleSubmitForm} handleClose={handleClose}/>
+ 
+ {modalConfirmation &&(
+ <ModalCon handleDownload={handleDownload}downloadLink={downloadLink}/>
+ )
+ 
+
+ }
  
  
  
